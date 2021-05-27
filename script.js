@@ -32,6 +32,18 @@ button.addEventListener('click', function () {
     advice.style.fontSize = '42px';
   }
 });
+
+// button.addEventListener('mouseover', function () {
+//   let randomElement = getRandomElement(phrases);
+//   smoothly(phrase, 'textContent', randomElement.text)
+//   smoothly(image, 'src', randomElement.image)
+
+//   if (randomElement.text.length > 40) {
+//     advice.style.fontSize = '33px';
+//   } else {
+//     advice.style.fontSize = '42px';
+//   }
+// });
 for (let i = 0; i < 3; i = i + 1) {
   smoothly (phrase, 'textContent', phrases[i].text);
   smoothly (image, 'src', phrases[i].image);
