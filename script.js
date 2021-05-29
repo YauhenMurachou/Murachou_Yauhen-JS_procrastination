@@ -43,48 +43,60 @@ let page = document.querySelector('.page');
 let themeButton = document.querySelector('.theme-button');
 themeButton.onclick = function () {
   page.classList.toggle('light-theme');
-  page.classList.toggle('dark-theme');  
+  page.classList.toggle('dark-theme');
 };
 
 let tooltipElem;
 
-    document.onmouseover = function(event) {
-      let target = event.target.closest('[data-tooltip]');
+document.onmouseover = function (event) {
+  let target = event.target.closest('[data-tooltip]');
 
-      // если у нас есть подсказка...
-      let tooltipHtml = target.dataset.tooltip;
-      if (!tooltipHtml) return;
+  // если у нас есть подсказка...
+  let tooltipHtml = target.dataset.tooltip;
+  if (!tooltipHtml) return;
 
-      // ...создадим элемент для подсказки
+  // ...создадим элемент для подсказки
 
-      tooltipElem = document.createElement('div');
-      tooltipElem.className = 'tooltip';
-      tooltipElem.innerHTML = tooltipHtml;
-      document.body.append(tooltipElem);
+  tooltipElem = document.createElement('div');
+  tooltipElem.className = 'tooltip';
+  tooltipElem.innerHTML = tooltipHtml;
+  document.body.append(tooltipElem);
 
-      // спозиционируем его сверху от аннотируемого элемента (top-center)
-      let coords = target.getBoundingClientRect();
+  // спозиционируем его сверху от аннотируемого элемента (top-center)
+  let coords = target.getBoundingClientRect();
 
-      let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
-      if (left < 0) left = 0; // не заезжать за левый край окна
+  let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+  if (left < 0) left = 0; // не заезжать за левый край окна
 
-      let top = coords.top - tooltipElem.offsetHeight - 5;
-      if (top < 0) { // если подсказка не помещается сверху, то отображать её снизу
-        top = coords.top + target.offsetHeight + 5;
-      }
+  let top = coords.top - tooltipElem.offsetHeight - 5;
+  if (top < 0) { // если подсказка не помещается сверху, то отображать её снизу
+    top = coords.top + target.offsetHeight + 5;
+  }
 
-      tooltipElem.style.left = left + 'px';
-      tooltipElem.style.top = top + 'px';
-    };
+  tooltipElem.style.left = left + 'px';
+  tooltipElem.style.top = top + 'px';
+};
 
-    document.onmouseout = function(e) {
+document.onmouseout = function (e) {
 
-      if (tooltipElem) {
-        tooltipElem.remove();
-        tooltipElem = null;
-      }
+  if (tooltipElem) {
+    tooltipElem.remove();
+    tooltipElem = null;
+  }
 
-    };
+};
+
+
+let message = document.querySelector('.subscription-message');
+let form = document.querySelector('.subscription');
+let email = document.querySelector('.subscription-email');
+
+form.onsubmit = function (evt) {
+  evt.preventDefault();
+  // Измените значение textContent на следующей строке
+  message.textContent = 'Адрес ' + email.value + ' добавлен в список получателей рассылки.';;
+};
+
 
 // let dayTheme = document.querySelector('.theme-button', '.light-theme');
 // dayTheme.textContent = 'День';
