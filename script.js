@@ -41,17 +41,28 @@ for (let i = 0; i < 3; i = i + 1) {
 
 let page = document.querySelector('.page');
 let themeButton = document.querySelector('.theme-button');
-themeButton.onclick = function () {
+themeButton.addEventListener('click', function () {
   page.classList.toggle('light-theme');
   page.classList.toggle('dark-theme');
-};
+}
+)
+
+// themeButton.addEventListener('click', function () {
+//   if (themeButton.innerHTML === '<i class="fas fa-sun"></i>') {
+//     themeButton.innerHTML = '<i class="fas fa-moon"></i>'
+//   } else if (themeButton.innerHTML === '<i class="fas fa-moon"></i>') {
+//     themeButton.innerHTML = '<i class="fas fa-sun"></i>'
+//   }
+// }
+// )
+
 
 let tooltipElem;
 
 document.onmouseover = function (event) {
   let target = event.target.closest('[data-tooltip]');
 
-  // если у нас есть подсказка...
+  // если у нас есть подсказка...tooltipHtml это содержимое подсказки
   let tooltipHtml = target.dataset.tooltip;
   if (!tooltipHtml) return;
 
@@ -83,7 +94,6 @@ document.onmouseout = function (e) {
     tooltipElem.remove();
     tooltipElem = null;
   }
-
 };
 
 
@@ -94,7 +104,7 @@ let email = document.querySelector('.subscription-email');
 form.onsubmit = function (evt) {
   evt.preventDefault();
   // Измените значение textContent на следующей строке
-  message.textContent = 'Адрес ' + email.value + ' добавлен в список получателей рассылки.';;
+  message.textContent = 'Адрес ' + email.value + ' добавлен в список получателей рассылки.';
 };
 
 
