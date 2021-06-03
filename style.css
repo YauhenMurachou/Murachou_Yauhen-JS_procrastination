@@ -23,17 +23,23 @@ html {
 body {
   position: relative;  
   min-height: 100%;
-  max-width: 640px;
-  margin: 0 auto;
+  /* max-width: 640px;
+  margin: 0 auto; */
   font-family: 'Suisse';
   box-sizing: border-box;
   padding: 36px;
+  display: flex;
 }
-/* 
+
+.converter-main {
+  max-width: 250px;
+  position: fixed;
+}
+
 .container {
-  max-width: 640px;
+  max-width: 680px;
   margin: 0 auto;
-} */
+}
 
 .dark-theme{
   background-color: #323131;
@@ -55,10 +61,6 @@ body {
   background-color: #333333;
 }
 
-/* .light-theme .theme-button  {
-  border: 1px solid #333333;
-   } */
-
 .light-theme .button  {
   border: 1px solid #333333;
 }
@@ -70,44 +72,16 @@ body {
 }
 
 .theme-button {
-  position: relative;
-  /* height: 53px; */
+  position: relative; 
   margin: auto 0;
-  /* padding: 0px 16px 0px 36px; */
-  font-size: 22px;
+  font-size: 30px;
   cursor: pointer;
   color: yellow;
-  /* border-radius: 2px; */  
-  /* background-size: 100%; */
 }
 
-
-
-/* .dark-theme .theme-button { 
-  background-image: url(images/moon.svg);
-  background-color: transparent;
+.light-theme .theme-button {
+  color: red;  
 }
-
-.light-theme .theme-button { 
-  background-image: url(images/sun.svg);
-} */
-/* .dark-theme .theme-button::before {
-  background-image: url(images/dark.svg); 
- }
- 
- .light-theme .theme-button::before {
-   background-image: url(images/sun.svg); 
-  } */
-/* .theme-button::before {
-  position: absolute;
-  content: "";
-  width: 15px;
-  height: 15px;
-   top: 7px;
-  left: 12px;
-} */
-
-
 
 .button {
   width: 100px;
@@ -136,13 +110,6 @@ body {
   font-weight: bold;
   line-height: 1.1;
   margin-bottom: 70px;
-}
-
-.footer {
-  font-size: 16px;
-  margin: 0;
-  /* position: absolute; */
-  bottom: 36px;
 }
 
 .tooltip {
@@ -178,64 +145,75 @@ body {
   padding: 20px 12px;
 }
 
-    /* .light-theme .subscription {
-      background-color: #ffffff;
-      box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
+.subscription-inner {
+  position: relative;
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.subscription-button {
+  font-size: 12px;
+  border: 0;
+  padding: 7px 16px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  color: #fff;
+  background-color: #DC143C;
+}
+
+.dark-theme .subscription-button {      
+  color: #fff;
+  background-color: #9484f2;
+}
+
+.subscription-label {
+  position: absolute;
+  top: -12px;
+  font-size: 10px;
+  line-height: 14px;
   }
 
-  .dark-theme .subscription {
-    background-color: #808080;
-    box-shadow: 0 1px 4px rgb(0 0 0 / 60%);
-} */
-
-/* .dark-theme .subscription {
-  background-color: #808080;
-  box-shadow: 0 1px 4px rgb(0 0 0 / 60%);
-} */
-
-    .subscription-inner {
-      position: relative;
-      flex-grow: 1;
-      margin-right: 10px;
-  }
-
-    .subscription-button {
-      font-size: 12px;
-      border: 0;
-      padding: 7px 16px;
-      border-radius: 2px;
-      flex-shrink: 0;
-      color: #fff;
-      background-color: #DC143C;
-    }
-
-    .dark-theme .subscription-button {
-      
-      color: #fff;
-      background-color: #9484f2;
-    }
-
-    .subscription-label {
-      position: absolute;
-      top: -12px;
-      font-size: 10px;
-      line-height: 14px;
-  }
-
-  .subscription-email {
-    width: 100%;
-    height: 30px;
-    border: 0;
-    background-color: transparent;
-    font: inherit;
-    font-size: 14px;
-    line-height: 30px;
-    border-bottom: 1px solid #DC143C;
-    outline:none;
+.subscription-email {
+  width: 100%;
+  height: 30px;
+  border: 0;
+  background-color: transparent;
+  font: inherit;
+  font-size: 14px;
+  line-height: 30px;
+  border-bottom: 1px solid #DC143C;
+  outline:none;
 }
 
 .dark-theme .subscription-email {
   color: #fff;
   border-bottom: 1px solid #9484f2;
+}
+
+.more-info-button{
+  max-width: 350px;
+  padding: 10px;
+  font-size: 18px;
+  margin: 10px auto 30px auto;
+  cursor: pointer;
+  display: block;
+  border: 0;
+  border-radius: 5px;
+}
+
+.dark-theme .more-info-button {
+  color: black;
+  background-color: yellow;
+}
+
+.light-theme .more-info-button {
+  color: black;
+  background-color: #AFEEEE;
+}
+
+.footer {
+  font-size: 14px;
+  margin: 0;
+  bottom: 36px;
 }
 

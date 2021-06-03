@@ -15,33 +15,56 @@
 
 <body class="page dark-theme">
 
-
-  <div class="header">
-    <div class="theme-button" data-tooltip="Дневной/ночной режим"><i class="fas fa-moon"></i></div>
-    <p class="logo">Ideas for procrastination</p>
-    <div class="button" data-tooltip="Нажми, чтобы увидеть варианты">Ещё идея</div>
-  </div>
-  <img class="image" src="https://code.s3.yandex.net/web-code/procrastinate/9.png">
-  <div class="advice">
-    <span>Не писать код, а</span>
-    <span class="phrase">что бы поделать?</span>
-    <img class="cursor" src="https://code.s3.yandex.net/web-code/cursor.gif">
-  </div>
-
-  <h3 class="inner-heading">Не пропусти важные обновления</h3>
-
-  <p class="subscription-message">Обещаем присылать вам различные варианты прокрастинации не чаще одного раза в день</p>
-
-  <form action="#" method="post" class="subscription">
-    <div class="subscription-inner">
-      <label class="subscription-label" for="subscription-email">email</label>
-      <input type="email" class="subscription-email" placeholder="your_email@gmail.com" value="your_email@gmail.com"
-        required id="subscription-email">
+  <div class="converter-main">
+    <p class="converter-title"> Пока прокрастинируешь, посчитай упущенный доход</p>
+    <div class="convert_block_item">
+      <input type="number" id="val" placeholder="введите сумму..."/>
+      <select id="cur1">
+          <option>USD</option>
+          <option>EUR</option>
+          <option>BYN</option>
+      </select>
     </div>
+    <div class="convert_block_item">
+      <div class="convert_result">= 00,000</div>
+      <select id="cur2">
+          <option>USD</option>
+          <option>EUR</option>
+          <option>BYN</option>
+      </select>
+    </div>
+  </div>
 
-    <button class="button subscription-button" type="submit">Подписаться</button>
-  </form>
-  <p class="footer">© 2021 Сделал Мурачёв Евгений, город Витебск</p>
+  <div class="container">
+    <div class="header">
+      <div class="theme-button"><i class="fas fa-moon"></i></div>
+      <p class="logo">Ideas for procrastination</p>
+      <div class="button" data-tooltip="Нажми, чтобы увидеть варианты">Ещё идея</div>
+    </div>
+    <img class="image" src="https://code.s3.yandex.net/web-code/procrastinate/9.png">
+    <div class="advice">
+      <span>Не писать код, а</span>
+      <span class="phrase">что бы поделать?</span>
+      <img class="cursor" src="https://code.s3.yandex.net/web-code/cursor.gif">
+    </div>
+    <h3 class="inner-heading">Не пропусти важные обновления</h3>
+    <p class="subscription-message">Обещаем присылать вам различные варианты прокрастинации не чаще одного раза в день</p>
+    <form action="#" method="post" class="subscription">
+      <div class="subscription-inner">
+        <label class="subscription-label" for="subscription-email">email</label>
+        <input type="email" class="subscription-email" placeholder="your_email@gmail.com" value="your_email@gmail.com"
+          required id="subscription-email">
+      </div>
+      <button class="button subscription-button" type="submit">Подписаться</button>
+    </form>
+    <div class="information">
+      <button class="more-info-button" type="submit">Псс, парень! Хочешь узнать о себе больше?</button>
+    </div>
+    
+    <p class="footer">© 2021 Сделал Мурачёв Евгений, город Витебск</p>
+  </div>
+
+  
 
 
   <script src="https://code.s3.yandex.net/web-code/smoothly.js"></script>

@@ -47,14 +47,14 @@ themeButton.addEventListener('click', function () {
 }
 )
 
-// themeButton.addEventListener('click', function () {
-//   if (themeButton.innerHTML === '<i class="fas fa-sun"></i>') {
-//     themeButton.innerHTML = '<i class="fas fa-moon"></i>'
-//   } else if (themeButton.innerHTML === '<i class="fas fa-moon"></i>') {
-//     themeButton.innerHTML = '<i class="fas fa-sun"></i>'
-//   }
-// }
-// )
+themeButton.addEventListener('click', function () {
+  if (themeButton.innerHTML === '<i class="fas fa-sun"></i>') {
+    themeButton.innerHTML = '<i class="fas fa-moon"></i>'
+  } else if (themeButton.innerHTML === '<i class="fas fa-moon"></i>') {
+    themeButton.innerHTML = '<i class="fas fa-sun"></i>'
+  }
+}
+)
 
 
 let tooltipElem;
@@ -107,8 +107,101 @@ form.onsubmit = function (evt) {
   message.textContent = 'Адрес ' + email.value + ' добавлен в список получателей рассылки.';
 };
 
+let moreInfo = document.querySelector('.more-info-button');
 
-// let dayTheme = document.querySelector('.theme-button', '.light-theme');
-// dayTheme.textContent = 'День';
-// let nightTheme = document.querySelector('.theme-button', '.dark-theme');
-// nightTheme.textContent = 'Ночь';
+function questionary() {
+  let surName = prompt('Введите свою фамилию');
+  while (!surName || (+surName) == 0) {
+    surName = prompt('Введите корректные данные! Назад дороги нет!')
+  };
+
+  let firstName = prompt('Введите своё имя');
+  while (!firstName || (+firstName) == 0) {
+    firstName = prompt('Введите корректные данные! Назад дороги нет!')
+  };
+
+  let secondName = prompt('Введите своё отчество');
+  while (!secondName || (+secondName) == 0) {
+    secondName = prompt('Введите корректные данные! Назад дороги нет!')
+  };
+
+  let age = prompt('Сколько Вам полных лет?');
+  while (!age || (+age) == 0 || +age % 1 !== 0 || +age <= 0 || +age > 140) {
+    age = prompt('Введите корректные данные! Назад дороги нет, и букв в возрасте не бывает!')
+  };
+
+  let ageInDays = (age * 365);
+
+  let ageFromFive = (+age + 5);
+
+  let gender = confirm('Ваш пол мужской?');
+  if (gender) {
+    gender = 'мужской';
+  } else {
+    gender = 'женский';
+  }
+
+  let pension;
+  if ((age >= 63 && gender == 'мужской') || (age >= 58 && gender == 'женский')) {
+    pension = 'да';
+  } else if ((age < 63 && gender == 'мужской') || (age < 58 && gender == 'женский')) {
+    pension = 'нет';
+  }
+
+  let procrastination;
+  if (age < 18) {
+    procrastination = '3 часа 40 минут в день';
+  } else if (age >= 18 && age < 30) {
+    procrastination = '2 часа 10 минут в день';
+  } else if (age >= 30 && age < 45) {
+    procrastination = '1 часа 20 минут в день';
+  } else if (age >= 45 && age < 60) {
+    procrastination = 'довольно редко, в среднем 20 минут в неделю';
+  } else if (age >= 60) {
+    procrastination = 'в таком возрасте уже не до прокрастинации';
+  }
+
+
+  alert(`ваше ФИО: ${surName} ${firstName} ${secondName} \n
+  ваш возраст в годах: ${age} \n
+  ваш возраст в днях: ${ageInDays} \n
+  через 5 лет вам будет: ${ageFromFive} \n
+  ваш пол: ${gender} \n
+  вы на пенсии: ${pension} \n
+  вы прокрастинируете: ${procrastination}  `)
+}
+
+moreInfo.addEventListener('click', questionary);
+
+
+window.onload = function () {
+  let c = { 'USD': '2.53', 'EUR': '3.09', 'BYN': '1' }; // Устанавливаем курс валют
+
+  let val = document.getElementById('val');
+  let currency1 = document.getElementById('cur1');
+  let currency2 = document.getElementById('cur2');
+  let result = document.getElementsByClassName('convert_result')[0]; // Получаем поле куда будем писать результат
+  function summ() {
+    let z = 0;
+    if (currency1.value === currency2.value) {
+      result.innerText = val.value;
+    } else {
+      if (currency1.value != 'BYN') {
+        z = val.value * c[currency1.value];
+        result.innerHTML = Math.ceil((z / c[currency2.value]) * 100) / 100;
+      } else { // Если не равны
+        result.innerHTML = Math.ceil((val.value * c[currency2.value]) * 100) / 100;
+      }
+    }
+  }
+  val.oninput = function () {
+    summ();
+  };
+  currency1.onchange = function () { 
+    summ();
+  };
+  currency2.onchange = function () { 
+    summ();
+  }
+}
+
