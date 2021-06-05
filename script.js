@@ -1,3 +1,4 @@
+//изменение вариантов прокрастинации по клику.smoothly - мини-библиотека Яндекса
 let phrases = [
   { text: 'отправить другу смешную гифку', image: 'https://code.s3.yandex.net/web-code/procrastinate/1.gif' },
   { text: 'посмотреть скидки на авиабилеты', image: 'https://code.s3.yandex.net/web-code/procrastinate/2.png' },
@@ -12,6 +13,7 @@ let phrases = [
 ];
 
 function getRandomElement(arr) {
+
   let randIndex = Math.floor(Math.random() * arr.length);
   return arr[randIndex];
 }
@@ -33,21 +35,28 @@ button.addEventListener('click', function () {
   }
 });
 
-
 for (let i = 0; i < 3; i = i + 1) {
   smoothly(phrase, 'textContent', phrases[i].text);
   smoothly(image, 'src', phrases[i].image);
 }
 
+
+
+//переключение темы день-ночь
 let page = document.querySelector('.page');
 let themeButton = document.querySelector('.theme-button');
 themeButton.addEventListener('click', function () {
+
   page.classList.toggle('light-theme');
   page.classList.toggle('dark-theme');
 }
 )
 
+
+
+//изменение месяц-солнце при смене темы
 themeButton.addEventListener('click', function () {
+
   if (themeButton.innerHTML === '<i class="fas fa-sun"></i>') {
     themeButton.innerHTML = '<i class="fas fa-moon"></i>'
   } else if (themeButton.innerHTML === '<i class="fas fa-moon"></i>') {
@@ -57,6 +66,7 @@ themeButton.addEventListener('click', function () {
 )
 
 
+//всплывающая подсказка на кнопках
 let tooltipElem;
 
 document.onmouseover = function (event) {
@@ -66,14 +76,13 @@ document.onmouseover = function (event) {
   let tooltipHtml = target.dataset.tooltip;
   if (!tooltipHtml) return;
 
-  // ...создадим элемент для подсказки
-
+  // создание элемента для подсказки
   tooltipElem = document.createElement('div');
   tooltipElem.className = 'tooltip';
   tooltipElem.innerHTML = tooltipHtml;
   document.body.append(tooltipElem);
 
-  // спозиционируем его сверху от аннотируемого элемента (top-center)
+  // позиционирование сверху от элемента
   let coords = target.getBoundingClientRect();
 
   let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
@@ -97,16 +106,20 @@ document.onmouseout = function (e) {
 };
 
 
+
+//работа с кнопкой подписки на рассылку
 let message = document.querySelector('.subscription-message');
 let form = document.querySelector('.subscription');
 let email = document.querySelector('.subscription-email');
 
 form.onsubmit = function (evt) {
   evt.preventDefault();
-  // Измените значение textContent на следующей строке
   message.textContent = 'Адрес ' + email.value + ' добавлен в список получателей рассылки.';
 };
 
+
+
+//блок, из которого нельзя выйти, не ответив на вопросы
 let moreInfo = document.querySelector('.more-info-button');
 
 function questionary() {
@@ -154,13 +167,12 @@ function questionary() {
   } else if (age >= 18 && age < 30) {
     procrastination = '2 часа 10 минут в день';
   } else if (age >= 30 && age < 45) {
-    procrastination = '1 часа 20 минут в день';
+    procrastination = '1 час 20 минут в день';
   } else if (age >= 45 && age < 60) {
     procrastination = 'довольно редко, в среднем 20 минут в неделю';
   } else if (age >= 60) {
     procrastination = 'в таком возрасте уже не до прокрастинации';
   }
-
 
   alert(`ваше ФИО: ${surName} ${firstName} ${secondName} \n
   ваш возраст в годах: ${age} \n
@@ -174,6 +186,8 @@ function questionary() {
 moreInfo.addEventListener('click', questionary);
 
 
+
+//конвертер валют
 window.onload = function () {
   let c = { 'USD': '2.53', 'EUR': '3.09', 'BYN': '1' }; // Устанавливаем курс валют
 
@@ -181,6 +195,7 @@ window.onload = function () {
   let currency1 = document.getElementById('cur1');
   let currency2 = document.getElementById('cur2');
   let result = document.getElementsByClassName('convert_result')[0]; // Получаем поле куда будем писать результат
+  
   function summ() {
     let z = 0;
     if (currency1.value === currency2.value) {
@@ -194,6 +209,7 @@ window.onload = function () {
       }
     }
   }
+
   val.oninput = function () {
     summ();
   };

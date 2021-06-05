@@ -23,8 +23,6 @@ html {
 body {
   position: relative;  
   min-height: 100%;
-  /* max-width: 640px;
-  margin: 0 auto; */
   font-family: 'Suisse';
   box-sizing: border-box;
   padding: 36px;
@@ -124,6 +122,11 @@ body {
   box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
 }
 
+.light-theme .tooltip {
+  color:  #fff;
+  background: #696969;
+}
+
 .subscription-message {
   position: relative;
   margin-left: 24px;
@@ -194,7 +197,7 @@ body {
   max-width: 350px;
   padding: 10px;
   font-size: 18px;
-  margin: 10px auto 30px auto;
+  margin: 20px auto 30px auto;
   cursor: pointer;
   display: block;
   border: 0;
@@ -207,8 +210,8 @@ body {
 }
 
 .light-theme .more-info-button {
-  color: black;
-  background-color: #AFEEEE;
+  color: #fff;
+  background-color: #4169E1;
 }
 
 .footer {
